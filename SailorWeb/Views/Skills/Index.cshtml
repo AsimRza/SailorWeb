@@ -1,0 +1,116 @@
+﻿@model PagedList.IPagedList<SailorWeb.Models.Model.Skills_TBL>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using PagedList
+@using PagedList.Mvc
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Bacarıqlar</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="/Home/Index"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="/Skills/Index">Bacarıqlar</a></li>
+
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a href="/Skills/Create" class="btn btn-sm btn-success">Yeni əlavə et</a>
+                    <!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Məlumatlar</h3>
+                </div>
+                <!-- Light table -->
+                <div class="table-responsive" style=" min-height: 300px !important;">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="sort">Adı</th>
+                                <th scope="col" class="sort">Faizi</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+
+                            @foreach (var item in Model)
+                            {
+
+                            <tr>
+                                <td>
+                                    @item.SkillsName
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <span class="completion mr-2">@item.SkillPercent%</span>
+                                        <div>
+                                            <div class="progress">
+                                                @if (@item.SkillPercent <= 100 && @item.SkillPercent > 75)
+                                                {
+                                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@item.SkillPercent" aria-valuemin="0" aria-valuemax="100" style="width: @item.SkillPercent%;"></div>
+                                                }
+                                                else if (@item.SkillPercent <= 75 && @item.SkillPercent >= 50)
+                                                {
+                                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="@item.SkillPercent" aria-valuemin="0" aria-valuemax="100" style="width: @item.SkillPercent%;"></div>
+                                                }
+                                                else
+                                                {
+                                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="@item.SkillPercent" aria-valuemin="0" aria-valuemax="100" style="width: @item.SkillPercent%;"></div>
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+
+                                            <a class="dropdown-item" href="/Skills/Edit/@item.SkillsID"><i class="fas fa-sync-alt text-primary"></i>Redaktə et</a>
+                                            <a class="dropdown-item" href="/Skills/Delete/@item.SkillsID"><i class="fas fa-trash-alt text-danger"></i>Sil</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer py-4">
+                    <nav aria-label="...">
+                        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SailorWeb.Models.Model.Contact_TBL>
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Location</td>
+                <td>@item.Number</td>
+                <td>@item.Email</td>
+                <td>@item.Facebook</td>
+                <td>@item.Linkedin</td>
+                <td>@item.ContactId</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

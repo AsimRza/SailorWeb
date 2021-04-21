@@ -1,0 +1,68 @@
+﻿@model SailorWeb.Models.Model.Faq_TBL
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">FAQ</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="/Home/Index"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="/Faq/Index">FAQ</a></li>
+                            <li class="breadcrumb-item"><a href="/Faq/Details/@Model.FaqId">Ətraflı</a></li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a href="/FAQ/Create" class="btn btn-sm btn-success">Yeni əlavə et</a>
+                    <a href="/FAQ/Edit/@Model.FaqId" class="btn btn-sm btn-neutral">Redaktə et</a>
+                    <a href="/FAQ/Delete/@Model.FaqId" class="btn btn-sm btn-danger">Sil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Ətraflı baxış</h3>
+                </div>
+                <!-- Light table -->
+                <hr />
+                <div class="pl-3">
+
+                    <dl class="dl-horizontal">
+                        <dt class="text-danger">
+                            @Html.DisplayNameFor(model => model.FaqHeader)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.FaqHeader)
+                        </dd>
+                        <hr style="width:101%" class="ml--3"/>
+                        <dt class="mt-4 text-danger">
+                            @Html.DisplayNameFor(model => model.FaqDescription)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.FaqDescription)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

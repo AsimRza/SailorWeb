@@ -1,0 +1,114 @@
+﻿@model SailorWeb.Models.Model.Team_TBL
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Kommandamız</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="/Home/Index"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="/Team/Index">Kommandamız</a></li>
+                            <li class="breadcrumb-item"><a href="/Team/Details/@Model.TeamId">Ətraflı</a></li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    <a href="/Team/Create" class="btn btn-sm btn-success">Yeni əlavə et</a>
+                    <a href="/Team/Edit/@Model.TeamId" class="btn btn-sm btn-neutral">Redaktə et</a>
+                    <a href="/Team/Delete/@Model.TeamId" class="btn btn-sm btn-danger">Sil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Ətraflı baxış</h3>
+                </div>
+                <!-- Light table -->
+                <hr />
+                <div class="pl-3">
+                    <dl class="dl-horizontal">
+                        <dt class="text-danger">
+                            @Html.DisplayNameFor(model => model.TeamName)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.TeamName)
+                        </dd>
+                        <hr style="width:101%" class="ml--3" />
+                        <dt class="mt-4 text-danger">
+                            @Html.DisplayNameFor(model => model.TeamPosition)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.TeamPosition)
+                        </dd>
+                        <hr style="width:101%" class="ml--3" />
+                        <dt class="mt-4 text-danger">
+                            @Html.DisplayNameFor(model => model.TeamDescription)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.TeamDescription)
+                        </dd>
+                        <hr style="width:101%" class="ml--3" />
+                        <dt class="mt-4 text-danger">
+                            @Html.DisplayNameFor(model => model.TeamImg)
+                        </dt>
+
+                        <dd class="mt-3">
+                            <img src="@Model.TeamImg" height="200px" width="200" />
+
+                        </dd>
+                        <hr style="width:101%" class="ml--3" />
+                        <dt class="mt-4 text-danger">
+                            @Html.DisplayNameFor(model => model.Twitter)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.Twitter)
+                        </dd>
+                        <hr style="width:101%" class="ml--3" />
+                        <dt class="mt-4 text-danger">
+                            @Html.DisplayNameFor(model => model.Facebook)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.Facebook)
+                        </dd>
+                        <hr style="width:101%" class="ml--3" />
+                        <dt class="mt-4 text-danger">
+                            @Html.DisplayNameFor(model => model.Instagram)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.Instagram)
+                        </dd>
+                        <hr style="width:101%" class="ml--3" />
+                        <dt class="mt-4 text-danger">
+                            @Html.DisplayNameFor(model => model.Linkedin)
+                        </dt>
+
+                        <dd class="mt-2">
+                            @Html.DisplayFor(model => model.Linkedin)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
